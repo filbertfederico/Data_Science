@@ -7,8 +7,8 @@ df = pd.read_excel(ExcelFilePath)
 
 # deleting everything except the important columns
 df.drop(df.columns.difference(['Shooter Last Name', 'Shooter First Name', 'Full Date', 'City', 'Number Killed', 'Age',
-                               'Gender', 'Education', 'School Performance', 'School Performance Specified',
-                               'Community Involvement', 'Community Involvement Specified', 'Criminal Record',
+                               'Gender', 'Education', 'School Performance',
+                               'Community Involvement', 'Criminal Record',
                                'Part I Crimes', 'Part II Crimes', 'Highest Level of Criminal Justice Involvement',
                                'History of Physical Altercations', 'History of Animal Abuse',
                                'History of Domestic Abuse', 'Domestic Abuse Specified', 'History of Sexual Offenses',
@@ -18,14 +18,13 @@ df.drop(df.columns.difference(['Shooter Last Name', 'Shooter First Name', 'Full 
                                'Neglected', 'Childhood SES', 'Mother Violent Treatment', 'Parental Substance Abuse',
                                'Parent Criminal Record', 'Family Member Incarcerated', 'Adult Trauma',
                                'Recent or Ongoing Stressor', 'Signs of Being in Crisis', 'Timeline of Signs of Crisis',
-                               'Signs of Crisis Expanded', 'Inability to Perform Daily Tasks', 'Notably Depressed Mood',
+                               'Inability to Perform Daily Tasks', 'Notably Depressed Mood',
                                'Unusually Calm or Happy', 'Rapid Mood Swings', 'Increased Agitation', 'Abusive Behavior',
                                'Isolation', 'Losing Touch with Reality', 'Paranoia', 'Suicidality',
                                'Prior Hospitalization', 'Voluntary or Involuntary Hospitalization', 'Prior Counseling',
-                               'Voluntary or Mandatory Counseling', 'Psychiatric Medication',
-                               'Psychiatric Medication Specified', 'Treatment 6 Months Prior to Shooting',
+                               'Voluntary or Mandatory Counseling', 'Psychiatric Medication', 'Treatment 6 Months Prior to Shooting',
                                'Mental Illness', 'Known Family Mental Health History', 'Autism Spectrum',
-                               'Substance Use', 'Health Issues', 'Health Issues - Specify', 'Head Injury / Possible TBI',
+                               'Substance Use', 'Health Issues', 'Head Injury / Possible TBI',
                                'Known Prejudices', 'Motive: Racism/Xenophobia', 'Motive: Religious Hate',
                                'Motive: Misogyny', 'Motive: Homophobia', 'Motive: Employment Issue',
                                'Motive: Economic Issue', 'Motive: Legal Issue', 'Motive: Relationship Issue',
@@ -33,5 +32,34 @@ df.drop(df.columns.difference(['Shooter Last Name', 'Shooter First Name', 'Full 
                                'Motive: Unknown', 'Role of Psychosis in the Shooting', 'Social Media Use ']), 1,
         inplace=True)
 
+# df = df.fillna("NULL")
+df = df.drop(144)
+print(df.loc[140:150])
 
-df.to_excel("afterPreProcess.xlsx", index=False)
+print("column with more than 1 null: ")
+for i in df.columns:
+    if df[i].isnull().sum() > 1:
+        print(i)
+print("----------------------------------------------------------------------------")
+
+print("column with more than 10 null: ")
+for i in df.columns:
+    if df[i].isnull().sum() > 1:
+        print(i)
+print("----------------------------------------------------------------------------")
+
+print("column with more than 50 null: ")
+for i in df.columns:
+    if df[i].isnull().sum() > 1:
+        print(i)
+print("----------------------------------------------------------------------------")
+
+print("column with more than 100 null: ")
+for i in df.columns:
+    if df[i].isnull().sum() > 100:
+        print(i)
+
+# print(df.info())
+
+df.to_csv("afterPreProcess.csv", index=False)
+df.to_excel("afterPreProcess.xlsx")

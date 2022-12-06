@@ -18,7 +18,6 @@ for x in d:
 
 df['Full Date'] = newDate
 
-df = df.fillna("NULL")
 df.to_excel("afterCleaning.xlsx", index=False)
 
 
