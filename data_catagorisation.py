@@ -1,6 +1,6 @@
 import pandas as pd
 
-FilePath = "afterPreProcess.csv"
+FilePath = "csv_files/afterPreProcess.csv"
 df = pd.read_csv(FilePath)
 
 
@@ -236,5 +236,5 @@ df['Family member with mental health issues'] = df.apply(lambda row: categorise_
 
 df = df.drop("Known Family Mental Health History", axis=1)
 
-df.to_csv("CategorisedData.csv", index=False)
-df.to_excel("CategorisedData.xlsx", index=False)
+df.to_csv("csv_files/CategorisedData.csv", index=False)
+df.to_excel("excel_files/CategorisedData.xlsx", index=False)

@@ -2,14 +2,14 @@ import pandas as pd
 
 from datetime import datetime
 
-ExcelFilePath = "afterCleaning.xlsx"
-df = pd.read_excel(ExcelFilePath)
+FilePath = "csv_files/afterCleaning.csv"
+df = pd.read_csv(FilePath)
 
 # deleting everything except the important columns
 df.drop(df.columns.difference(['Shooter Last Name', 'Shooter First Name', 'Full Date', 'City', 'Number Killed', 'Age',
                                'Gender', 'Education', 'School Performance',
                                'Community Involvement', 'Criminal Record',
-                               'Part I Crimes', 'Part II Crimes', 'Highest Level of Criminal Justice Involvement',
+                               'Part I Crimes', 'Part II Crimes',
                                'History of Physical Altercations', 'History of Animal Abuse',
                                'History of Domestic Abuse', 'Domestic Abuse Specified', 'History of Sexual Offenses',
                                'Violent Video Games', 'Bully', 'Bullied', 'Raised by Single Parent',
@@ -17,7 +17,7 @@ df.drop(df.columns.difference(['Shooter Last Name', 'Shooter First Name', 'Full 
                                'Childhood Trauma', 'Physically Abused', 'Sexually Abused', 'Emotionally Abused',
                                'Neglected', 'Childhood SES', 'Mother Violent Treatment', 'Parental Substance Abuse',
                                'Parent Criminal Record', 'Family Member Incarcerated', 'Adult Trauma',
-                               'Recent or Ongoing Stressor', 'Signs of Being in Crisis', 'Timeline of Signs of Crisis',
+                               'Recent or Ongoing Stressor', 'Signs of Being in Crisis',
                                'Inability to Perform Daily Tasks', 'Notably Depressed Mood',
                                'Unusually Calm or Happy', 'Rapid Mood Swings', 'Increased Agitation', 'Abusive Behavior',
                                'Isolation', 'Losing Touch with Reality', 'Paranoia', 'Suicidality',
@@ -29,12 +29,11 @@ df.drop(df.columns.difference(['Shooter Last Name', 'Shooter First Name', 'Full 
                                'Motive: Misogyny', 'Motive: Homophobia', 'Motive: Employment Issue',
                                'Motive: Economic Issue', 'Motive: Legal Issue', 'Motive: Relationship Issue',
                                'Motive: Interpersonal Conflict', 'Motive: Fame-Seeking', 'Motive: Other',
-                               'Motive: Unknown', 'Role of Psychosis in the Shooting', 'Social Media Use ']), 1,
+                               'Motive: Unknown', 'Social Media Use ']), 1,
         inplace=True)
 
 # df = df.fillna("NULL")
-df = df.drop(144)
-print(df.loc[140:150])
+df = df.drop(144) # empty row
 
 print("column with more than 1 null: ")
 for i in df.columns:
@@ -54,12 +53,6 @@ for i in df.columns:
         print(i)
 print("----------------------------------------------------------------------------")
 
-print("column with more than 100 null: ")
-for i in df.columns:
-    if df[i].isnull().sum() > 100:
-        print(i)
 
-# print(df.info())
-
-df.to_csv("afterPreProcess.csv", index=False)
-df.to_excel("afterPreProcess.xlsx")
+df.to_csv("csv_files/afterPreProcess.csv", index=False)
+df.to_excel("excel_files/afterPreProcess.xlsx")

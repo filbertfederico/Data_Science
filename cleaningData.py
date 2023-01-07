@@ -18,6 +18,8 @@ for x in d:
 
 df['Full Date'] = newDate
 
-df.to_excel("afterCleaning.xlsx", index=False)
+df.to_csv("csv_files/afterCleaning.csv", index=False)
+df.to_excel("excel_files/afterCleaning.xlsx", index=False)
+
 
 

@@ -1,7 +1,7 @@
 import pandas as pd
 
 
-FilePath = "CategorisedData.csv"
+FilePath = "csv_files/CategorisedData.csv"
 df = pd.read_csv(FilePath)
 
 df = df.apply(lambda x:x.fillna(x.value_counts().index[0]))
@@ -12,6 +12,6 @@ cols_to_drop = nunique[nunique == 1].index
 print(cols_to_drop)
 df.drop(cols_to_drop, axis=1, inplace=True)
 
+df.to_csv("csv_files/filledData.csv", index=False)
+df.to_excel("excel_files/filledData.xlsx", index=False)
 
-df.to_excel("filledData.xlsx", index=False)
-df.to_csv("filledData.csv", index=False)

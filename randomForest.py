@@ -2,34 +2,41 @@ from sklearn.ensemble import RandomForestClassifier
 import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
+from sklearn.model_selection import GridSearchCV
+from sklearn.metrics import classification_report
 
-df = pd.read_csv("filledData.csv")
+df = pd.read_csv("csv_files/labeledData.csv")
 workable_dataset = df.loc[:, ~df.columns.isin(['Shooter Last Name', 'Shooter First Name', 'Full Date', 'City'])]
 
-conditions = [(workable_dataset["Number Killed"] <= 6),
-              workable_dataset["Number Killed"] > 6]
-choices = [0, 1]
-
-workable_dataset['label'] = np.select(conditions, choices, default=np.nan)
-
-# X = workable_dataset.drop(["label"], axis=1)
-# y = workable_dataset["label"]
-#
-# X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4, random_state=42)
-
 train, test = train_test_split(workable_dataset, test_size=0.3)
-X_train = train.iloc[:, 20:70]
-y_train = train.iloc[:, -1]
-X_test = test.iloc[:, 20:70]
-y_test = test.iloc[:, -1]
+
+train_X = train.iloc[:, 6:95]
+train_y = train.iloc[:, -1]
+test_X = test.iloc[:, 6:95]
+test_y = test.iloc[:, -1]
+
+# the next lines were used to determine the best possible parameters, only run it once
+# -----------------------------------------------------
+# rf = RandomForestClassifier(random_state=42)
+#
+# parameters = {"n_estimators": [i for i in range(1, 500)]}
+#
+# grid_GBC = GridSearchCV(estimator=rf, param_grid=parameters, n_jobs=-1)
+# grid_GBC.fit(train_X, train_y)
+# print(" Results from Grid Search " )
+# print("\n The best score across ALL searched params:\n",grid_GBC.best_score_)
+# print("\n The best parameters across ALL searched params:\n",grid_GBC.best_params_)
+# -----------------------------------------------------
+# using the best possible parameters
 
 # Instantiate model with 1000 decision trees
-rf = RandomForestClassifier(n_estimators=500, max_features="auto", random_state=42)
+rf = RandomForestClassifier(n_estimators=327, random_state=42)
 # Train the model on training data
-rf.fit(X_train, y_train)
-predictions = rf.predict(X_test)
-print(predictions)
-print(rf.predict_proba(X_test))
+rf.fit(train_X, train_y)
+predictions = rf.predict(test_X)
 print(rf.feature_importances_)
 
-print(np.mean(predictions == y_test))
+print(np.mean(predictions == test_y))
+
+print(classification_report(test_y, predictions))
+

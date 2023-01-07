@@ -28,11 +28,19 @@ plt.show()
 # the elbow is situated at 4, therefore the value of k=4
 kmeans = KMeans(init="random", n_clusters=4, n_init=10, random_state=1)
 
-#fit k-means algorithm to data
+# fit k-means algorithm to data
 kmeans.fit(scaled_df)
 
-#view cluster assignments for each observation
+# view cluster assignments for each observation
 print(kmeans.labels_)
-
+y_kmeans = kmeans.predict(scaled_df)
 df['cluster'] = kmeans.labels_
+
+print(workable_dataset.iloc[:, 6])
+# plt.scatter(workable_dataset.iloc[:, 1], workable_dataset.iloc[:, 20], c=y_kmeans, s=20, cmap='viridis')
+#
+# centers = kmeans.cluster_centers_
+# plt.scatter(centers[:, 0], centers[:, 1], c='black', s=20, alpha=0.5)
+# plt.show()
+
 print(df)
