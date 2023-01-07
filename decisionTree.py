@@ -8,7 +8,7 @@ from sklearn import tree
 df = pd.read_csv("csv_files/labeledData.csv")
 workable_dataset = df.loc[:, ~df.columns.isin(['Shooter Last Name', 'Shooter First Name', 'Full Date', 'City'])]
 
-train, test = train_test_split(workable_dataset, test_size=0.3)
+train, test = train_test_split(workable_dataset, test_size=0.2)
 
 train_X = train.iloc[:, 6:95]
 train_y = train.iloc[:, -1]
