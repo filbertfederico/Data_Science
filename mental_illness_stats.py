@@ -40,4 +40,8 @@ compute_trauma_count(workable_dataset1, df)
 
 
 newdf = df.filter(['Number Killed', 'Mental Illness Count', 'Trauma Count'], axis=1)
-print(newdf)
+
+newdf["mental_state_stats"] = newdf["Mental Illness Count"] + newdf["Trauma Count"]
+
+newdf.to_csv("csv_files/mental_illness_stats.csv", index=False)
+newdf.to_excel("excel_files/mental_illness_stats..xlsx", index=False)

@@ -39,6 +39,6 @@ xg_reg = xgb.XGBClassifier(objective='reg:logistic', colsample_bytree=0.9, learn
 xg_reg.fit(train_X, train_y)
 
 preds = xg_reg.predict(test_X)
-print(f'accuracy for SVC kernel model rbf: {np.mean(preds == test_y)}')
+print(f'accuracy for the xgboost model: {np.mean(preds == test_y)}')
 
 print(classification_report(test_y, preds))
