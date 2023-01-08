@@ -44,4 +44,4 @@ newdf = df.filter(['Number Killed', 'Mental Illness Count', 'Trauma Count'], axi
 newdf["mental_state_stats"] = newdf["Mental Illness Count"] + newdf["Trauma Count"]
 
 newdf.to_csv("csv_files/mental_illness_stats.csv", index=False)
-newdf.to_excel("excel_files/mental_illness_stats..xlsx", index=False)
+newdf.to_excel("excel_files/mental_illness_stats.xlsx", index=False)
