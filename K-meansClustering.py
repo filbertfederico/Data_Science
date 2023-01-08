@@ -4,7 +4,7 @@ from sklearn.preprocessing import StandardScaler
 import matplotlib.pyplot as plt
 
 # read csv input file
-FilePath = "filledData.csv"
+FilePath = "csv_files/filledData.csv"
 df = pd.read_csv(FilePath)
 
 workable_dataset = df.loc[:, ~df.columns.isin(['Shooter Last Name', 'Shooter First Name', 'Full Date', 'City'])]
@@ -35,12 +35,5 @@ kmeans.fit(scaled_df)
 print(kmeans.labels_)
 y_kmeans = kmeans.predict(scaled_df)
 df['cluster'] = kmeans.labels_
-
-print(workable_dataset.iloc[:, 6])
-# plt.scatter(workable_dataset.iloc[:, 1], workable_dataset.iloc[:, 20], c=y_kmeans, s=20, cmap='viridis')
-#
-# centers = kmeans.cluster_centers_
-# plt.scatter(centers[:, 0], centers[:, 1], c='black', s=20, alpha=0.5)
-# plt.show()
 
 print(df)
