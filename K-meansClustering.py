@@ -1,10 +1,11 @@
+import numpy as np
 import pandas as pd
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
 import matplotlib.pyplot as plt
 
 # read csv input file
-FilePath = "csv_files/filledData.csv"
+FilePath = "csv_files/labeledData.csv"
 df = pd.read_csv(FilePath)
 
 workable_dataset = df.loc[:, ~df.columns.isin(['Shooter Last Name', 'Shooter First Name', 'Full Date', 'City'])]
@@ -26,7 +27,7 @@ plt.ylabel("SSE")
 plt.show()
 
 # the elbow is situated at 4, therefore the value of k=4
-kmeans = KMeans(init="random", n_clusters=4, n_init=10, random_state=1)
+kmeans = KMeans(init="random", n_clusters=2, n_init=10, random_state=1)
 
 # fit k-means algorithm to data
 kmeans.fit(scaled_df)
@@ -35,5 +36,7 @@ kmeans.fit(scaled_df)
 print(kmeans.labels_)
 y_kmeans = kmeans.predict(scaled_df)
 df['cluster'] = kmeans.labels_
+
+print(f'accuracy for k-means clustering: {np.mean(df["label"] == df["cluster"])}')
 
 print(df)
