@@ -36,7 +36,7 @@ rf.fit(train_X, train_y)
 predictions = rf.predict(test_X)
 print(rf.feature_importances_)
 
-print(np.mean(predictions == test_y))
+print(f'accuracy for SVC kernel model poly: {np.mean(predictions == test_y)}')
 
 print(classification_report(test_y, predictions))
 
