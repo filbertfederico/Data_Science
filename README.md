@@ -1,1 +1,3 @@
-# Data_Science
+# Mass Shooter database 
+#by Arish, Daniel and Filbert
+.
