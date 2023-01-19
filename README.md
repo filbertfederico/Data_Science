@@ -1,3 +1,3 @@
 # Mass Shooter database 
-#by Arish, Daniel and Filbert
-.
+by Arish, Daniel and Filbert
+-------------------------------
