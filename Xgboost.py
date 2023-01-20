@@ -23,7 +23,7 @@ test_y = test.iloc[:, -1]
 #               "learning_rate": [i for i in np.arange(0.01, 0.3, 0.01)],
 #               "max_depth": [1],
 #               "alpha": [i for i in range(1, 10)],
-#               "n_estimators": [10]}
+#               "n_estimators": [2]}
 #
 # grid_GBC = GridSearchCV(estimator=xg_reg, param_grid=parameters, n_jobs=-1)
 # grid_GBC.fit(train_X, train_y)
