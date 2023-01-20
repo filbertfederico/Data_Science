@@ -10,5 +10,3 @@ df['label'] = np.select(conditions, choices, default=np.nan)
 
 df.to_csv("csv_files/labeledData.csv", index=False)
 df.to_excel("excel_files/labeledData.xlsx", index=False)
-
-print(df["Voluntary Counseling"].unique())
