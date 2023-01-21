@@ -1,8 +1,9 @@
-# Mass Shooter database 
-by Arish, Daniel and Filbert
+# Machine Learning and the Prevention of Mass Shooting in the United States
+## by Arish, Daniel and Filbert
 -------------------------------
 As mass shootings have become a serious issue around the world, especially in America. We aim to find the root cause of the mass shootings by looking through each individual shooter's past and personal life to find if there are any links to their actions. This repository compiles data from the database created by the Violence Project.
 
+## Files description
 The ViolenceProjectDataBase.xlsx file is the original database created by the Violence Project
 
 The preProcessing file cleans the dataset of data that isn't very relevant to the project or has too many null values in the dataset by deleting them
