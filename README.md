@@ -4,6 +4,16 @@
 As mass shootings have become a serious issue around the world, especially in America. We aim to find the root cause of the mass shootings by looking through each individual shooter's past and personal life to find if there are any links to their actions. This repository compiles data from the database created by the Violence Project.
 
 ## Files description
+The correlation matrix folder contains all the images of the correlation matrix of this dataset
+
+The csv_files folder contains all the csv files used throughout the process
+
+The excel_files folder contains all the excel files used throughout the process, mainly used to make the data more easily readable
+
+The Graph and other vizualization folder contains all the graphs that were made to analyze the dataset
+
+The Statistics folder contains all files that have to do mainly with the statistical analysis
+
 The ViolenceProjectDataBase.xlsx file is the original database created by the Violence Project
 
 The preProcessing file cleans the dataset of data that isn't very relevant to the project or has too many null values in the dataset by deleting them
